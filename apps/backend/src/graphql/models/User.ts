@@ -1,16 +1,18 @@
-import { Field, ObjectType } from "type-graphql";
+import { Field, ObjectType, Int, Directive } from "type-graphql";
+import { UserType } from "../../models/UserType";
 
 @ObjectType()
-export class User implements IUser {
-  @Field()
-  id: string;
+export class User implements UserType {
+  @Field(() => Int)
+  id: number;
 
   @Field()
+  @Directive('@constraint(format: "email")')
   email: string;
 
   @Field()
   name: string;
 
-  @Field()
-  birthdate?: Date;
+  @Field(() => String, { nullable: true })
+  status?: "Happy" | "Sad";
 }

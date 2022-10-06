@@ -1,0 +1,26 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+directive @constraint(minLength: Int, maxLength: Int, startsWith: String, endsWith: String, contains: String, notContains: String, pattern: String, format: String, min: Float, max: Float, exclusiveMin: Float, exclusiveMax: Float, multipleOf: Float, minItems: Int, maxItems: Int, uniqueTypeName: String) on INPUT_FIELD_DEFINITION | FIELD_DEFINITION | ARGUMENT_DEFINITION
+
+type Query {
+  getUser(name: String, userId: Int!): User!
+}
+
+type User {
+  id: Int!
+  email: String! @constraint(format: "email")
+  name: String!
+  status: String
+}
+
+type Mutation {
+  createUser(payload: UserCreationPayload!): User!
+}
+
+input UserCreationPayload {
+  email: String! @constraint(format: "email", minLength: 1)
+  name: String! @constraint(minLength: 1)
+}

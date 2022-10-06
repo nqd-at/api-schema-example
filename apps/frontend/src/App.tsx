@@ -1,34 +1,71 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { MantineProvider, SegmentedControl, Switch } from "@mantine/core";
+import { GraphQLForm } from "./components/GraphQLForm";
+import { RestForm } from "./components/RestForm";
+import { Section } from "./components/Section";
+import { ClientContext, GraphQLClient } from "graphql-hooks";
+import { useState } from "react";
+
+const client = new GraphQLClient({
+  url: "http://localhost:3000/graphql",
+});
+
+type DemoState = {
+  protocol: "rest" | "graphql";
+  useFrontendValidation: boolean;
+};
+
+type SegmentedControlOption = {
+  value: "rest" | "graphql";
+  label: string;
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [state, setState] = useState<DemoState>({
+    protocol: "rest",
+    useFrontendValidation: false,
+  });
+
+  const options: SegmentedControlOption[] = [
+    { label: "Rest API", value: "rest" },
+    { label: "GraphQL", value: "graphql" },
+  ];
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <MantineProvider withGlobalStyles withNormalizeCSS>
+      <div className="h-screen max-w-2xl mx-auto">
+        <div className="flex items-center p-4 space-x-4">
+          <SegmentedControl
+            data={options}
+            value={state.protocol}
+            onChange={(value) =>
+              setState({ ...state, protocol: value as "rest" | "graphql" })
+            }
+          />
+          <Switch
+            label="Use frontend validation"
+            onLabel="Y"
+            offLabel="N"
+            onChange={(e) => {
+              setState({ ...state, useFrontendValidation: e.target.checked });
+            }}
+          />
+        </div>
+        <div className="h-full p-4">
+          <Section>
+            {state.protocol === "rest" ? (
+              <RestForm useFrontendValidation={state.useFrontendValidation} />
+            ) : (
+              <ClientContext.Provider value={client}>
+                <GraphQLForm
+                  useFrontendValidation={state.useFrontendValidation}
+                />
+              </ClientContext.Provider>
+            )}
+          </Section>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    </MantineProvider>
+  );
 }
 
-export default App
+export default App;
