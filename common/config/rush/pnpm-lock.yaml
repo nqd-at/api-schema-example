@@ -10,6 +10,7 @@ specifiers:
   '@vitejs/plugin-react': ^2.1.0
   azure-functions-core-tools: ^4.x
   class-validator: ~0.13.2
+  graphql: ~15
   react: ^18.2.0
   react-dom: ^18.2.0
   reflect-metadata: ~0.1.13
@@ -27,10 +28,11 @@ dependencies:
   '@vitejs/plugin-react': 2.1.0_vite@3.1.4
   azure-functions-core-tools: 4.0.4785
   class-validator: 0.13.2
+  graphql: 15.8.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   reflect-metadata: 0.1.13
-  type-graphql: 1.1.1_class-validator@0.13.2
+  type-graphql: 1.1.1_aea24acf06b899fbc466d3b3b949c72d
   typedi: 0.10.0
   vite: 3.1.4
 
@@ -857,14 +859,6 @@ packages:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
     dev: false
 
-  /graphql-query-complexity/0.7.2:
-    resolution: {integrity: sha512-+VgmrfxGEjHI3zuojWOR8bsz7Ycz/BZjNjxnlUieTz5DsB92WoIrYCSZdWG7UWZ3rfcA1Gb2Nf+wB80GsaZWuQ==}
-    peerDependencies:
-      graphql: ^0.13.0 || ^14.0.0 || ^15.0.0
-    dependencies:
-      lodash.get: 4.4.2
-    dev: false
-
   /graphql-query-complexity/0.7.2_graphql@15.8.0:
     resolution: {integrity: sha512-+VgmrfxGEjHI3zuojWOR8bsz7Ycz/BZjNjxnlUieTz5DsB92WoIrYCSZdWG7UWZ3rfcA1Gb2Nf+wB80GsaZWuQ==}
     peerDependencies:
@@ -872,14 +866,6 @@ packages:
     dependencies:
       graphql: 15.8.0
       lodash.get: 4.4.2
-    dev: false
-
-  /graphql-subscriptions/1.2.1:
-    resolution: {integrity: sha512-95yD/tKi24q8xYa7Q9rhQN16AYj5wPbrb8tmHGM3WRc9EBmWrG/0kkMl+tQG8wcEuE9ibR4zyOM31p5Sdr2v4g==}
-    peerDependencies:
-      graphql: ^0.10.5 || ^0.11.3 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0
-    dependencies:
-      iterall: 1.3.0
     dev: false
 
   /graphql-subscriptions/1.2.1_graphql@15.8.0:
@@ -1235,25 +1221,6 @@ packages:
       tslib: 2.4.0
     dev: false
 
-  /type-graphql/1.1.1_class-validator@0.13.2:
-    resolution: {integrity: sha512-iOOWVn0ehCYMukmnXStbkRwFE9dcjt7/oDcBS1JyQZo9CbhlIll4lHHps54HMEk4A4c8bUPd+DjK8w1/ZrxB4A==}
-    engines: {node: '>= 10.3'}
-    requiresBuild: true
-    peerDependencies:
-      class-validator: '>=0.12.0'
-      graphql: ^15.3.0
-    dependencies:
-      '@types/glob': 7.2.0
-      '@types/node': 16.11.64
-      '@types/semver': 7.3.12
-      class-validator: 0.13.2
-      glob: 7.1.6
-      graphql-query-complexity: 0.7.2
-      graphql-subscriptions: 1.2.1
-      semver: 7.3.8
-      tslib: 2.4.0
-    dev: false
-
   /typedi/0.10.0:
     resolution: {integrity: sha512-v3UJF8xm68BBj6AF4oQML3ikrfK2c9EmZUyLOfShpJuItAqVBHWP/KtpGinkSsIiP6EZyyb6Z3NXyW9dgS9X1w==}
     dev: false
@@ -1292,6 +1259,11 @@ packages:
 
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+    dev: false
+
+  /uuid/9.0.0:
+    resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
+    hasBin: true
     dev: false
 
   /validator/13.7.0:
@@ -1335,7 +1307,7 @@ packages:
     dev: false
 
   file:projects/backend.tgz:
-    resolution: {integrity: sha512-474/FCjoXeXO+RA4FLjp92D+YQguRHEkKbO+/ywYOXqkgabDhCH3J5gfD08b7uqUF8rpfdrPsDCvp9xEBJ3Q8A==, tarball: file:projects/backend.tgz}
+    resolution: {integrity: sha512-U+Im8CWxlY3BzCeIx3/OeCZQQ4sKoCd3YzfvB7PuHB2JW7JY22rlSbGK6aR7E2vSliXjpfjfAoMmhdeQ2yLRvA==, tarball: file:projects/backend.tgz}
     name: '@rush-temp/backend'
     version: 0.0.0
     dependencies:
@@ -1348,6 +1320,7 @@ packages:
       type-graphql: 1.1.1_aea24acf06b899fbc466d3b3b949c72d
       typedi: 0.10.0
       typescript: 4.8.4
+      uuid: 9.0.0
     transitivePeerDependencies:
       - supports-color
     dev: false

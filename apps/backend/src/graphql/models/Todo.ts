@@ -8,12 +8,9 @@ export class Todo implements ITodo {
   @Field()
   name: string;
 
-  @Field()
+  @Field({ defaultValue: false })
   completed: boolean;
 
   @Field()
   createdDate: Date;
-
-  @Field()
-  dueDate?: Date;
 }

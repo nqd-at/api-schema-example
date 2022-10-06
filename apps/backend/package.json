@@ -9,7 +9,14 @@
     "start": "func start",
     "test": "echo \"No tests yet...\""
   },
-  "dependencies": {"class-validator":"~0.13.2","reflect-metadata":"~0.1.13","type-graphql":"~1.1.1","typedi":"~0.10.0","graphql":"~15"},
+  "dependencies": {
+    "class-validator": "~0.13.2",
+    "reflect-metadata": "~0.1.13",
+    "type-graphql": "~1.1.1",
+    "typedi": "~0.10.0",
+    "graphql": "~15",
+    "uuid": "~9.0.0"
+  },
   "devDependencies": {
     "@azure/functions": "^3.0.0",
     "azure-functions-core-tools": "^4.x",
