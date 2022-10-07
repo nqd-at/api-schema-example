@@ -1,18 +1,19 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions";
-import {$log} from "@tsed/common";
-import { PlatformKoa } from "@tsed/platform-koa";
+import { $log, PlatformBuilder } from "@tsed/common";
+import { PlatformExpress } from "@tsed/platform-express";
+import Express from "express";
 import { Server } from "../src/Server";
 
-let platform = PlatformKoa.create(Server);
+let platform: PlatformBuilder<Express.Application, Express.Router>;
 
 const bootstrap = async () => {
   try {
     $log.debug("Start server...");
-    platform = await PlatformKoa.bootstrap(Server);
+    platform = await PlatformExpress.bootstrap(Server);
   } catch (er) {
     $log.error(er);
   }
-}
+};
 
 const promise = bootstrap();
 
@@ -20,12 +21,14 @@ const httpTrigger: AzureFunction = async function (
   context: Context,
   req: HttpRequest
 ): Promise<void> {
+  console.log(11, req.url)
   try {
-    await promise
-    platform.app.raw(req, context.res)
-    // handler.callback(req, res);
+    await promise;
+
+    platform.callback(context.req as any, context.res as any);
+    console.log(context.res)
   } catch (e) {
-    console.error(e)
+    console.error(e);
   }
 
   // context.log('HTTP trigger function processed a request.');
