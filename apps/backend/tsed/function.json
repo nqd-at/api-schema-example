@@ -16,5 +16,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/openapi/index.js"
+  "scriptFile": "../dist/tsed/index.js"
 }

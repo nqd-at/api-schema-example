@@ -15,7 +15,13 @@
     "type-graphql": "~1.1.1",
     "typedi": "~0.10.0",
     "graphql": "~15",
-    "uuid": "~9.0.0"
+    "uuid": "~9.0.0",
+    "@tsed/platform-serverless": "~6.133.1",
+    "@tsed/common": "~6.133.1",
+    "@tsed/typegraphql": "~6.133.1",
+    "@tsed/platform-koa": "~6.133.1",
+    "@tsed/di": "~6.133.1",
+    "koa": "~2.13.4"
   },
   "devDependencies": {
     "@azure/functions": "^3.0.0",
