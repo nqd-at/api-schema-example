@@ -5,8 +5,7 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "methods": ["get", "post"],
-      "route": "{*routeName}"
+      "route": "{*segments}"
     },
     {
       "type": "http",
@@ -14,10 +13,5 @@
       "name": "res"
     }
   ],
-  "extensions": {
-    "http": {
-      "routePrefix": ""
-    }
-  },
   "scriptFile": "../dist/tsed/index.js"
 }
