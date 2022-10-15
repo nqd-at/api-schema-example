@@ -329,8 +329,8 @@
       "projectFolder": "apps/frontend"
     },
     {
-      "packageName": "@apps/backend",
-      "projectFolder": "apps/backend"
+      "packageName": "@apps/rest",
+      "projectFolder": "apps/rest"
     }
     // {
     //   /**
