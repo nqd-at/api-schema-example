@@ -333,6 +333,10 @@
       "projectFolder": "apps/rest"
     },
     {
+      "packageName": "@apps/graphql",
+      "projectFolder": "apps/graphql"
+    },
+    {
       "packageName": "@apps/cli",
       "projectFolder": "apps/cli"
     }
