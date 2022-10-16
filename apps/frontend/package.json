@@ -7,13 +7,18 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "gen:rest": "app-cli -i http://localhost:3000/.schema -o ./src/generated"
+    "gen:rest": "app-cli -i http://localhost:3000/.schema -o ./src/generated",
+    "codegen": "graphql-codegen --config codegen.yaml"
   },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "@apps/cli": "~1.0.0",
-    "zod": "~3.19.1"
+    "zod": "~3.19.1",
+    "@graphql-codegen/cli": "~2.13.7",
+    "graphql": "~15",
+    "@anatine/graphql-zod-validation": "~0.8.4",
+    "@graphql-codegen/schema-ast": "~2.5.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
@@ -21,6 +26,9 @@
     "@vitejs/plugin-react": "^2.1.0",
     "typescript": "^4.6.4",
     "vite": "^3.1.0",
-    "ts-node": "~10.9.1"
+    "ts-node": "~10.9.1",
+    "@graphql-codegen/typescript": "2.7.4",
+    "@graphql-codegen/cli": "2.13.7",
+    "graphql-codegen-zod": "~1.10.6"
   }
 }

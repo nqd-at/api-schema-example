@@ -1,0 +1,19 @@
+overwrite: true
+schema: "http://localhost:3000/graphql"
+generates:
+  src/generated/graphql/schema.graphql:
+    plugins:
+      - "schema-ast"
+  src/generated/graphql/types.ts:
+    plugins:
+      - "typescript"
+  src/generated/graphql/zod.ts:
+    plugins:
+      - "@anatine/graphql-zod-validation"
+    config:
+      importFrom: ./types
+      strictScalars: false
+      schema: "zod"
+      directives:
+        constraint:
+          minLength: min

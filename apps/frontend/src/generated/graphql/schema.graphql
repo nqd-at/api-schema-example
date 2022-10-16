@@ -1,0 +1,29 @@
+directive @constraint(contains: String, endsWith: String, exclusiveMax: Float, exclusiveMin: Float, format: String, max: Float, maxLength: Int, min: Float, minLength: Int, multipleOf: Float, notContains: String, pattern: String, startsWith: String, uniqueTypeName: String) on FIELD_DEFINITION | INPUT_FIELD_DEFINITION
+
+type Mutation {
+  createUser(payload: UserCreationPayload!): SuccessStatus!
+}
+
+type Query {
+  getUser(name: String, userId: Int!): User!
+}
+
+type SuccessStatus {
+  status: String!
+}
+
+type User {
+  email: String!
+  id: Int!
+  name: String!
+  phoneNumbers: [String!]!
+  status: String
+}
+
+input UserCreationPayload {
+  email: String!
+  name: name_String_NotNull_minLength_5!
+  phoneNumbers: [String!]!
+}
+
+scalar name_String_NotNull_minLength_5
