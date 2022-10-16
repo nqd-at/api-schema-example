@@ -331,6 +331,10 @@
     {
       "packageName": "@apps/rest",
       "projectFolder": "apps/rest"
+    },
+    {
+      "packageName": "@apps/cli",
+      "projectFolder": "apps/cli"
     }
     // {
     //   /**

@@ -12,8 +12,8 @@ import { injectable } from "tsyringe";
 import { User } from "../models/User";
 import { UserCreationParams, UsersService } from "../services/UserService";
 
-@injectable()
 @Route("users")
+@injectable()
 export class UsersController extends Controller {
   constructor(private userService: UsersService) {
     super();
@@ -22,8 +22,9 @@ export class UsersController extends Controller {
   @Get("{userId}")
   public async getUser(
     @Path() userId: number,
-    @Query() name?: string
+    @Query() name?: any
   ): Promise<User> {
+    console.log("name", name);
     return this.userService.get(userId, name);
   }
 
