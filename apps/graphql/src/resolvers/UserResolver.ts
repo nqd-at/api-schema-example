@@ -1,5 +1,6 @@
 import { injectable } from "tsyringe";
 import { Arg, Query, Resolver, Int, Mutation } from "type-graphql";
+import { SuccessStatus } from "../models/SuccessStatus";
 import { User } from "../models/User";
 import { UserCreationPayload } from "../models/UserCreationPayload";
 import { UsersService } from "../services/UserService";
@@ -17,9 +18,12 @@ export class UserResolver {
     return this.userService.get(userId, name);
   }
 
-  @Mutation(() => Boolean)
-  public async createUser(@Arg("payload") payload: UserCreationPayload) {
+  @Mutation(() => SuccessStatus)
+  public async createUser(
+    @Arg("payload") payload: UserCreationPayload
+  ): Promise<SuccessStatus> {
     this.userService.create(payload);
-    return true;
+    console.log(payload)
+    return { status: "success" };
   }
 }

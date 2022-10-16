@@ -1,9 +1,13 @@
 import express, { json, urlencoded } from "express";
 import { createServer } from "@graphql-yoga/node";
-import { buildSchema } from "type-graphql";
-import { container } from "tsyringe";
+import { buildSchemaSync, createResolversMap } from "type-graphql";
+import {
+  constraintDirectiveTypeDefs,
+  constraintDirective,
+} from "graphql-constraint-directive";
+import { printSchemaWithDirectives } from "@graphql-tools/utils";
 import { UserResolver } from "./resolvers/UserResolver";
-import Container from "./container";
+import { makeExecutableSchema } from "@graphql-tools/schema";
 
 export const app = express();
 
@@ -15,13 +19,17 @@ app.use(
 app.use(json());
 
 const bootstrap = async () => {
-  const schema = await buildSchema({
+  const nonDirectiveSchema = buildSchemaSync({
     resolvers: [UserResolver],
-    container: new Container(),
+  });
+  const typeDefs = printSchemaWithDirectives(nonDirectiveSchema);
+  const resolvers = createResolversMap(nonDirectiveSchema);
+  const schema = makeExecutableSchema({
+    typeDefs: [typeDefs, constraintDirectiveTypeDefs],
+    resolvers,
   });
   const server = createServer({
-    schema,
-    maskedErrors: false,
+    schema: constraintDirective()(schema),
   });
   app.use("/graphql", server);
 };

@@ -1,5 +1,5 @@
 import { IsEmail } from "class-validator";
-import { Field, InputType } from "type-graphql";
+import { Directive, Field, InputType } from "type-graphql";
 import { UserCreationParams } from "../services/UserService";
 
 @InputType()
@@ -8,6 +8,7 @@ export class UserCreationPayload implements UserCreationParams {
   @IsEmail()
   email: string;
 
+  @Directive("@constraint(minLength: 5)")
   @Field()
   name: string;
 
