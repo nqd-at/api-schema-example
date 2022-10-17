@@ -1,12 +1,11 @@
 import express, { json, urlencoded } from "express";
 import { createServer } from "@graphql-yoga/node";
-import { buildSchemaSync, createResolversMap } from "type-graphql";
+import { loadFiles } from "@graphql-tools/load-files";
 import {
   constraintDirectiveTypeDefs,
-  constraintDirective,
+  createEnvelopQueryValidationPlugin,
 } from "graphql-constraint-directive";
 import { printSchemaWithDirectives } from "@graphql-tools/utils";
-import { UserResolver } from "./resolvers/UserResolver";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 
 export const app = express();
@@ -19,18 +18,27 @@ app.use(
 app.use(json());
 
 const bootstrap = async () => {
-  const nonDirectiveSchema = buildSchemaSync({
-    resolvers: [UserResolver],
-  });
-  const typeDefs = printSchemaWithDirectives(nonDirectiveSchema);
-  const resolvers = createResolversMap(nonDirectiveSchema);
+  const typedefs = await loadFiles("./schema.graphql");
   const schema = makeExecutableSchema({
-    typeDefs: [typeDefs, constraintDirectiveTypeDefs],
-    resolvers,
+    typeDefs: [typedefs, constraintDirectiveTypeDefs],
   });
+  // const nonDirectiveSchema = buildSchemaSync({
+  //   resolvers: [UserResolver],
+  // });
+  // const typeDefs = printSchemaWithDirectives(nonDirectiveSchema);
+  // const resolvers = createResolversMap(nonDirectiveSchema);
+  // const schema = makeExecutableSchema({
+  //   typeDefs: [typeDefs, constraintDirectiveTypeDefs],
+  //   resolvers,
+  // });
   const server = createServer({
-    schema: constraintDirective()(schema),
+    schema,
+    plugins: [createEnvelopQueryValidationPlugin()],
+    context() {
+      return {}
+    }
   });
+  console.log(printSchemaWithDirectives(schema));
   app.use("/graphql", server);
 };
 

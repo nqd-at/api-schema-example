@@ -16,7 +16,7 @@
     "@apps/cli": "~1.0.0",
     "zod": "~3.19.1",
     "@graphql-codegen/cli": "~2.13.7",
-    "graphql": "~15",
+    "graphql": "~16.6.0",
     "@anatine/graphql-zod-validation": "~0.8.4",
     "@graphql-codegen/schema-ast": "~2.5.1"
   },

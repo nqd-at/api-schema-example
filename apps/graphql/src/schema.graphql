@@ -1,0 +1,25 @@
+type Query {
+  getUser(name: String, userId: Int!): User!
+}
+
+type User {
+  id: Int!
+  email: String!
+  name: String!
+  status: String
+  phoneNumbers: [String!]!
+}
+
+type Mutation {
+  createUser(payload: UserCreationPayload!): SuccessStatus!
+}
+
+type SuccessStatus {
+  status: String!
+}
+
+input UserCreationPayload {
+  email: String!
+  name: String! @constraint(minLength: 5)
+  phoneNumbers: [String!]!
+}
