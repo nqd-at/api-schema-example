@@ -56,6 +56,7 @@ export const GraphQLForm = ({
         />
         <span>GraphQL</span>
       </h3>
+      <div className="mb-8"><a href="http://localhost:3000/.graphql-schema" target="_blank">GraphQL Schema</a></div>
       <Form onSubmit={submit} />
       <div className="mt-8">
         <pre className="p-4 overflow-auto rounded bg-slate-100">

@@ -42,6 +42,11 @@ export const RestForm = ({
           className="inline-block h-8"
         />
       </h3>
+      <div className="mb-8">
+        <a href="http://localhost:3000/.openapi-schema" target="_blank">
+          OpenAPI Schema
+        </a>
+      </div>
       <Form onSubmit={submit} />
       <div className="mt-8">
         <pre className="p-4 overflow-auto rounded bg-slate-100">
