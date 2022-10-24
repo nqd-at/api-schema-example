@@ -4,21 +4,21 @@
 export const $UserType = {
   properties: {
     id: {
-      type: 'number',
+      type: "number",
       isRequired: true,
-      format: 'int32',
+      format: "int32",
     },
     email: {
-      type: 'string',
+      type: "string",
       isRequired: true,
-      format: 'email',
+      format: "email",
     },
     name: {
-      type: 'string',
+      type: "string",
       isRequired: true,
     },
     status: {
-      type: 'Enum',
+      type: "Enum",
     },
   },
 } as const;

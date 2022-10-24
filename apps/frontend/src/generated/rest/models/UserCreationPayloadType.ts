@@ -6,4 +6,3 @@ export type UserCreationPayloadType = {
   email: string;
   name: string;
 };
-

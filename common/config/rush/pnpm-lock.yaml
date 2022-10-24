@@ -32,10 +32,12 @@ specifiers:
   graphql: ~16.6.0
   graphql-codegen-typescript-validation-schema: ~0.6.2
   graphql-constraint-directive: ~4.1.2
+  graphql-hooks: ~6.0.3
   json-schema-to-zod: ~0.2.0
   nodemon: ~2.0.20
   openapi-typescript-codegen: ~0.23.0
   postcss: ~8.4.18
+  prettier: ~2.7.1
   react: ^18.2.0
   react-dom: ^18.2.0
   react-hook-form: ~7.37.0
@@ -49,7 +51,6 @@ specifiers:
   tsyringe: ~4.7.0
   type-graphql: 2.0.0-beta.1
   typescript: ~4.8.4
-  use-suspender: ~1.1.0
   vite: ^3.1.0
   zod: ~3.19.1
 
@@ -85,10 +86,12 @@ dependencies:
   graphql: 16.6.0
   graphql-codegen-typescript-validation-schema: 0.6.2
   graphql-constraint-directive: 4.1.2_graphql@16.6.0
+  graphql-hooks: 6.0.3_react@18.2.0
   json-schema-to-zod: 0.2.0
   nodemon: 2.0.20
   openapi-typescript-codegen: 0.23.0
   postcss: 8.4.18
+  prettier: 2.7.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hook-form: 7.37.0_react@18.2.0
@@ -102,7 +105,6 @@ dependencies:
   tsyringe: 4.7.0
   type-graphql: 2.0.0-beta.1_8c3bd1c2ef09f16bd935bce693531cc6
   typescript: 4.8.4
-  use-suspender: 1.1.0
   vite: 3.1.4
   zod: 3.19.1
 
@@ -5901,7 +5903,7 @@ packages:
     dev: false
 
   file:projects/backend.tgz:
-    resolution: {integrity: sha512-g30FZwDKs9sIXeyHeuv2QpWuk3lNaNrAO6JK9HNm7T+/7pIyzoXqOQJ+Cz0C4DTz8CNsKF8N6YtZFLtxTAi2UQ==, tarball: file:projects/backend.tgz}
+    resolution: {integrity: sha512-l7ntlbeabkw3JqlWZ50WQAanf7sbQEVu5SIhk+IGPZmS1YEKi+gzSTKeGkqd/oO3gDsC5G81N7EFI0J6TdBcDg==, tarball: file:projects/backend.tgz}
     name: '@rush-temp/backend'
     version: 0.0.0
     dependencies:
@@ -5920,6 +5922,7 @@ packages:
       graphql: 16.6.0
       graphql-constraint-directive: 4.1.2_graphql@16.6.0
       nodemon: 2.0.20
+      prettier: 2.7.1
       reflect-metadata: 0.1.13
       swagger-ui-express: 4.5.0_express@4.18.2
       ts-node: 10.9.1_40fb2bb1eb5e5cbd29fac9a11691e0a3
@@ -5954,7 +5957,7 @@ packages:
     dev: false
 
   file:projects/frontend.tgz_@types+node@18.11.2:
-    resolution: {integrity: sha512-WvIFa9yqX57l92T7TOWn58eGEbU18tR+pZZtCfkJP2kgdAIYzZo1kmWKv2wh57dtzAgvt/lIFzMnB5VBFpA6bg==, tarball: file:projects/frontend.tgz}
+    resolution: {integrity: sha512-iVvyyaojB9hXNRLVYMm/0JlbIJNChzFqONMOfkNedLt08E868IZ4rq+6x7o3ijU1AnFkww1TX9muW/knwFllDQ==, tarball: file:projects/frontend.tgz}
     id: file:projects/frontend.tgz
     name: '@rush-temp/frontend'
     version: 0.0.0
@@ -5974,6 +5977,7 @@ packages:
       graphql-codegen-typescript-validation-schema: 0.6.2
       graphql-hooks: 6.0.3_react@18.2.0
       postcss: 8.4.18
+      prettier: 2.7.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-hook-form: 7.37.0_react@18.2.0

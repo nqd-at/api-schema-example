@@ -26,7 +26,7 @@ export const initGraphQL = async (app: express.Application) => {
   const server = createServer({
     schema: constraintDirective()(schema),
     plugins: [createEnvelopQueryValidationPlugin()],
-    maskedErrors: false
+    maskedErrors: false,
   });
 
   app.use(cors());

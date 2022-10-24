@@ -24,12 +24,12 @@ export const GraphQLForm = ({
   useFrontendValidation: boolean;
 }) => {
   const [data, setData] = useState<UserCreationPayload | APIError<object>>();
-  
+
   const [addUser] = useMutation<
     { createUser: User },
     { payload: UserCreationPayload }
   >(query);
-  
+
   const form = useForm<UserCreationPayload>({
     resolver: useFrontendValidation
       ? zodResolver(UserCreationPayloadSchema())
@@ -38,7 +38,7 @@ export const GraphQLForm = ({
 
   useEffect(() => {
     form.clearErrors();
-  }, [useFrontendValidation])
+  }, [useFrontendValidation]);
 
   const submit = async (input: UserCreationPayload) => {
     const { data: result, error } = await addUser({
@@ -56,7 +56,11 @@ export const GraphQLForm = ({
         />
         <span>GraphQL</span>
       </h3>
-      <div className="mb-8"><a href="http://localhost:3000/.graphql-schema" target="_blank">GraphQL Schema</a></div>
+      <div className="mb-8">
+        <a href="http://localhost:3000/.graphql-schema" target="_blank">
+          GraphQL Schema
+        </a>
+      </div>
       <Form onSubmit={submit} />
       <div className="mt-8">
         <pre className="p-4 overflow-auto rounded bg-slate-100">

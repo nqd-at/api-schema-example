@@ -10,12 +10,8 @@ export type UserType = {
 };
 
 export namespace UserType {
-
   export enum status {
-    HAPPY = 'Happy',
-    SAD = 'Sad',
+    HAPPY = "Happy",
+    SAD = "Sad",
   }
-
-
 }
-

@@ -4,14 +4,14 @@
 export const $UserCreationPayloadType = {
   properties: {
     email: {
-      type: 'string',
+      type: "string",
       isRequired: true,
-      format: 'email',
+      format: "email",
       minLength: 1,
-      pattern: '^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$',
+      pattern: "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
     },
     name: {
-      type: 'string',
+      type: "string",
       isRequired: true,
       minLength: 1,
     },
